@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+:root {
+  --ff-primary: "Roboto", sans-serif;
+
+  --fc-primary: hsl(0, 0%, 100%);
+  --bc-primary: hsl(240, 6%, 21%);
+
+  --bc-card: hsl(240, 6%, 39%);
+  --bc-card-click: hsl(194, 97%, 41%);
+
+  font-size: clamp(40%, 1% + 2vw, 62.5%);
+}
+
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+
+  background-color: var(--bc-primary);
+
+  font-family: var(--ff-primary);
+}
+
+html.light {
+  --fc-primary: hsl(240, 6%, 21%);
+  --bc-primary: hsl(0, 0%, 100%);
+
+  --bc-card: hsl(240, 9%, 89%);
+  --bc-card-click: hsl(194, 97%, 21%);
+}
+
+html.light .ph-sun,
+html:not(.light) .ph-moon {
+  display: none;
+}
+
+html.running .ph-play-circle,
+html:not(.running) .ph-pause-circle,
+html:not(.running) .ph-stop-circle {
+  display: none;
+}
+
+#toggle-mode {
+  position: absolute;
+  right: 3.2rem;
+  top: 3.2rem;
+  font-size: 3.2rem;
+  color: var(--fc-primary);
+}
+
+#app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 19.2rem;
+  animation: topDown 700ms 350ms backwards;
+}
+
+.timer span {
+  font-family: "Roboto", sans-serif;
+  color: var(--fc-primary);
+  font-size: 12.6rem;
+  line-height: 14.8rem;
+}
+
+#controls {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+}
+
+#controls button {
+  color: var(--fc-primary);
+  font-size: 4.8rem;
+}
+
+#display-music {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+}
+
+#display-music .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 13rem;
+  height: 15rem;
+  background-color: var(--bc-card);
+  border-radius: 2.4rem;
+
+  cursor: pointer;
+}
+
+#display-music .enable {
+  background: var(--bc-card-click);
+}
+
+#display-music .enable button svg path {
+  fill: var(--bc-primary);
+}
+
+html.light button svg path,
+html:not(.light) button svg path {
+  fill: var(--fc-primary);
+}
+
+@keyframes topDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@media (max-width: 920px) {
+  #app {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5rem;
+  }
+}
